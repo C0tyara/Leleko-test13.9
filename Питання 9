@@ -1,0 +1,32 @@
+run = True
+while run:
+    pygame.time.delay(30)
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            run = False
+
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_LEFT] and xp > bound:
+        xp -= vp
+    if keys[pygame.K_RIGHT] and xp < WIDTH - width:
+        xp += vp
+
+    if y + radius + vy >= yp:
+        if xp <= x + vx <= xp + width:
+            vy = -vy
+            vx *= num
+            vy *= num
+            score += 1
+        else:
+            run = False
+            drawScore(win, score) # Викликаємо функцію відображення рахунку
+    elif y + vy < border_u:
+        vy = -vy
+    elif x + vx < border_l or x + vx > border_r:
+        vx = -vx
+
+    x += vx
+    y += vy
+    drawWindow()
+
+pygame.quit()
