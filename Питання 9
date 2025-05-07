@@ -19,7 +19,7 @@ while run:
             score += 1
         else:
             run = False
-            drawScore(win, score) # Викликаємо функцію відображення рахунку
+            drawScore(win, score)
     elif y + vy < border_u:
         vy = -vy
     elif x + vx < border_l or x + vx > border_r:
